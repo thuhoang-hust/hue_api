@@ -1,3 +1,4 @@
 from django.contrib import admin
+from myhue_api import models
 
-# Register your models here.
+admin.site.register(models.UserProfile)
