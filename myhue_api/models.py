@@ -67,3 +67,19 @@ class ProfileFeedItem(models.Model):
     def __str__(self):
         """Return the model as a string"""
         return self.status_text
+
+
+class tblLocation(models.Model):
+    user_id = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    name = models.CharField(max_length=255)
+
+
+class tblGroup(models.Model):
+    location_id = models.ForeignKey(
+        tblLocation,
+        on_delete=models.CASCADE,
+    )
+    name = models.CharField(max_length=255)

@@ -35,3 +35,15 @@ class UserProfileFeedViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         """set the user profile to the logged in user"""
         serializer.save(user_profile=self.request.user)
+
+
+class tblLocationViewSet(viewsets.ModelViewSet):
+    """handle creating and updating (and reading) location"""
+    authentication_classes = (TokenAuthentication,)
+    serializer_class = serializers.tblLocationSerializer
+    queryset = models.tblLocation.objects.all()
+    permission_classes = (permissions.UpdateOwnLocation, IsAuthenticated)
+
+    def perform_create(self, serializer):
+        """set the user profile to the logged in user"""
+        serializer.save(user_id=self.request.user)

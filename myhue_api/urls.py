@@ -6,6 +6,7 @@ from myhue_api import views
 router = DefaultRouter()
 router.register('profile', views.UserProfileViewSet)
 router.register('feed', views.UserProfileFeedViewSet)
+router.register('location', views.tblLocationViewSet)
 
 urlpatterns = [
     path('login/', views.UserLoginApiView.as_view()),
